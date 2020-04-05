@@ -6,7 +6,7 @@ class BiteFish extends Fish{
   }
 
   checkProximity(){
-    let proximate_fishes = this.tank.getProximateDenizens(this.position, 50).filter(denizen=> denizen.isTasty === true).map(fish => fish.kill());
+    let proximate_fishes = this.tank.getProximateDenizens(this.position, 70).filter(denizen=> denizen.isTasty === true && denizen.id !== this.id).map(fish => fish.kill());
     console.log(proximate_fishes);
   }
 
