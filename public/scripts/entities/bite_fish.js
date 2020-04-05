@@ -7,11 +7,15 @@ class BiteFish extends Fish{
   }
 
   checkProximity(){
-    let proximate_fishes = this.tank.getProximateDenizens(this.position, 70).filter(denizen=> denizen.isTasty === true && denizen.id !== this.id).map(fish => fish.kill());
-    console.log(proximate_fishes);
+    let proximate_fishes = this.tank.getProximateDenizens(this.position, 30).filter(denizen=> denizen.isTasty === true && denizen.id !== this.id)
+    if(proximate_fishes.length > 0){
+      proximate_fishes = proximate_fishes.map(fish => fish.kill());
+    }
+    return proximate_fishes;
   }
 
-  onClick(){
+  update(t){
+    super.update(t);
     this.checkProximity();
   }
 }
